@@ -6,11 +6,7 @@
   <title>CoolHoot - Join Game</title>
   <link rel="icon" href="https://github.com/mojhehmod/proxy/blob/5cd089140c1895bd7f964b78a1fef1ec1c03b821/4e39226c95c27dc33b8bf68f7d5d7929.png?raw=true">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -18,44 +14,65 @@
       color: #ff2d00;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    header {
+      width: 100%;
+      background: #111;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 4px 10px rgba(255,0,0,0.3);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    header img {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      color: #ff2d00;
+      font-size: 2em;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      width: 100%;
+      padding-top: 100px;
     }
 
     .container {
       background: #111;
       border-radius: 12px;
-      padding: 50px;
-      box-shadow: 0 10px 40px rgba(255, 0, 0, 0.3);
-      max-width: 480px;
-      width: 100%;
+      padding: 60px 50px;
+      box-shadow: 0 10px 80px rgba(255,0,0,0.5);
+      max-width: 700px; 
+      width: 95%;
+      min-height: 80vh; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       text-align: center;
-      animation: slideIn 0.4s ease-out;
     }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      color: #ff2d00;
-      font-size: 2.2em;
-      margin-bottom: 8px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-      color: #ff4d3d;
-      font-size: 0.95em;
-      font-weight: 400;
-    }
+    .subtitle { color: #ff4d3d; margin-bottom: 40px; display:block; font-size: 1.3em; }
 
     .input-group {
-      margin-bottom: 24px;
+      margin-bottom: 25px;
       text-align: left;
+      flex-shrink: 0;
     }
 
     label {
@@ -63,16 +80,15 @@
       color: #ff2d00;
       font-weight: 500;
       margin-bottom: 8px;
-      font-size: 0.875em;
-      letter-spacing: 0.3px;
+      font-size: 1.1em;
     }
 
     input {
       width: 100%;
-      padding: 14px 16px;
+      padding: 18px 20px;
       border: 1.5px solid #ff2d00;
-      border-radius: 8px;
-      font-size: 1em;
+      border-radius: 10px;
+      font-size: 1.2em;
       background: #111;
       color: #fff;
       font-family: inherit;
@@ -82,60 +98,86 @@
     input:focus {
       outline: none;
       border-color: #ff4d3d;
-      box-shadow: 0 0 8px #ff2d00;
+      box-shadow: 0 0 12px #ff2d00;
     }
 
-    input::placeholder {
-      color: #ff6660;
-    }
+    input::placeholder { color: #ff6660; }
 
     button {
       width: 100%;
-      padding: 16px;
+      padding: 22px;
       background: #ff2d00;
       color: #fff;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
+      border-radius: 10px;
+      font-size: 1.3em;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 0 0 8px #ff2d00;
+      box-shadow: 0 0 15px #ff2d00;
     }
 
     button:hover {
       background: #ff4d3d;
-      box-shadow: 0 0 12px #ff2d00, 0 0 20px #ff2d00, 0 0 28px #ff2d00;
+      box-shadow: 0 0 25px #ff2d00, 0 0 35px #ff2d00, 0 0 45px #ff2d00;
       transform: translateY(-2px);
     }
 
-    button:active {
-      transform: translateY(0);
+    button:active { transform: translateY(0); }
+
+    footer {
+      width: 100%;
+      text-align: right;
+      padding: 10px 30px;
+      color: #ff2d00;
+      font-weight: 500;
+      font-size: 1em;
+      position: fixed;
+      bottom: 0;
+      right: 0;
     }
 
+    footer a {
+      color: #ff2d00;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
     @media (max-width: 640px) {
-      .container { padding: 30px 24px; }
-      h1 { font-size: 1.8em; }
+      header h1 { font-size: 1.6em; }
+      .container { padding: 50px 30px; min-height: 75vh; }
+      .subtitle { font-size: 1.1em; margin-bottom: 30px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
+    <img src="https://github.com/mojhehmod/proxy/blob/5cd089140c1895bd7f964b78a1fef1ec1c03b821/4e39226c95c27dc33b8bf68f7d5d7929.png?raw=true" alt="Logo">
     <h1>CoolHoot</h1>
-    <p class="subtitle">Join your game with bots</p>
-    
-    <div class="input-group">
-      <label for="pin">Game PIN</label>
-      <input id="pin" type="text" placeholder="Enter game PIN" autocomplete="off" />
-    </div>
+  </header>
 
-    <div class="input-group">
-      <label for="amount">Number of Bots</label>
-      <input id="amount" type="number" min="1" max="50" placeholder="1-50" autocomplete="off" />
-    </div>
+  <main>
+    <div class="container">
+      <span class="subtitle">Join your game with bots</span>
 
-    <button id="joinBtn">Join Game</button>
-  </div>
+      <div class="input-group">
+        <label for="pin">Game PIN</label>
+        <input id="pin" type="text" placeholder="Enter game PIN" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label for="amount">Number of Bots</label>
+        <input id="amount" type="number" min="1" max="50" placeholder="1-50" autocomplete="off" />
+      </div>
+
+      <button id="joinBtn">Join Game</button>
+    </div>
+  </main>
+
+  <footer>
+    All credits to <a href="https://killhoot.xyz/" target="_blank">https://killhoot.xyz/</a>
+  </footer>
 
   <script>
     const BACKEND_URL = 'https://7c5741f4-48b7-4a75-9a89-32d6eed18368-00-10g7gvwo8yiak.picard.replit.dev';
@@ -144,31 +186,19 @@
       const pin = document.getElementById('pin').value;
       const amount = document.getElementById('amount').value;
 
-      if (!pin || !amount) {
-        console.error('Please enter both PIN and number of bots');
-        return;
-      }
-
-      if (amount < 1 || amount > 50) {
-        console.error('Number of bots must be between 1 and 50');
-        return;
-      }
+      if (!pin || !amount) { console.error('Enter PIN & number of bots'); return; }
+      if (amount < 1 || amount > 50) { console.error('Number of bots must be 1-50'); return; }
 
       console.log('Joining game...');
-
       try {
         const response = await fetch(`${BACKEND_URL}/join`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ pin, amount })
         });
-
         const result = await response.json();
-        if (response.ok && !result.error && !result.message) {
-          console.log('Success:', result);
-        } else {
-          console.error('Error:', result);
-        }
+        if (response.ok && !result.error && !result.message) console.log('Success:', result);
+        else console.error('Error:', result);
       } catch (err) {
         console.error('Connection Error:', err);
       }
