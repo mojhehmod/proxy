@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CoolHoot</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    input, button { margin: 5px; padding: 10px; border-radius: 5px; border: none; }
+    button { cursor: pointer; background: #28a745; color: white; }
+    #output { white-space: pre-wrap; margin-top: 20px; width: 90%; max-width: 600px; background: #222; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+  <h1>CoolHoot</h1>
+
+  <input type="text" id="gamePin" placeholder="Game PIN" />
+  <input type="text" id="botName" placeholder="Bot Name" />
+  <input type="number" id="botCount" placeholder="Number of Bots" min="1" />
+
+  <button onclick="joinGame()">Join Game</button>
+  <button onclick="getStatus()">Get Status</button>
+
+  <div id="output"></div>
+
+  <script>
+    const backendUrl = 'https://YOUR-REPLIT-URL'; // ← Replace with your Replit URL
+
+    async function getStatus() {
+      try {
+        const res = await fetch(`${backendUrl}/proxy/user/status`);
+        const data = await res.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById('output').textContent = err;
+      }
+    }
+
+    async function joinGame() {
+      const pin = document.getElementById('gamePin').value;
+      const name = document.getElementById('botName').value;
+      const count = Number(document.getElementById('botCount').value);
+
+      try {
+        const res = await fetch(`${backendUrl}/proxy/user/join`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin, name, count })
+        });
+        const data = await res.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById('output').textContent = err;
+      }
+    }
+  </script>
+
+</body>
+</html>
